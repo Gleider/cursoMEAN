@@ -4,13 +4,14 @@ const port = 3003
 const bodyParser = require('body-parser')
 const express = require('express')
 const server = express()
-
+const allowCors = require('./cors')
 //urlencoded é o formato dos dados quando é feito a submissão de um formulário
 //bodyparser vai interpretar mais tipos de informações que venham
 server.use(bodyParser.urlencoded({ extended: true}))
 //pergunta se o conteúdo recebido é json, se for, vai fazer uma interpretação 
 //transformando o json em um objeto
 server.use(bodyParser.json())
+server.use(allowCors)
 
 //mostra mensagem caso tenha conectado com sucesso
 server.listen(port, function(){
